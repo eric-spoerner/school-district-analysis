@@ -26,6 +26,10 @@ Summary:
 
 There is a statement summarizing four changes to the school district analysis after reading and math scores have been replaced (5 pt).
 
+## Table of contents test
+
+[Analysis](#analysis)
+
 ## Project Overview
 
 Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.  Segment by multiple levels:
@@ -77,7 +81,9 @@ As part of the work on altering the analysis to exclude Thomas High 9th graders,
 
 Eliminated unecessary print statements and other debug statements in initial analysis for diagnostic purposes and replaced them with more streamlined purpose-driven cells for simplicity and legibility.
 
-## Analysis
+Added markdown cells to better document flow of analysis.
+
+## Analysis <a name="analysis"></a>
 
 ## General observations
 Nothing yet.
@@ -88,26 +94,53 @@ Nothing yet.
 
 ### District aggregation
 
+#### Original
+
 #### Amended
 ![Amended district summary](Analysis/Revised/district_summary.png)
 
 ### By school
+
+#### Original
 
 #### Amended
 ![Amended per school results](Analysis/Revised/per_school_results.png)
 
 ### Best performing schools
 
+#### Original
+
+#### Amended
+
 ### Worst performing schools
+
+#### Original
+
+#### Amended
 
 ### Math scores by school/grade
 
+#### Original
+
+#### Amended
+
 ### Reading scores by school/grade
+
+#### Original
+
+#### Amended
 
 ### Budget summary
 
+#### Original
+
+#### Amended
+
 ### By school type
 
+#### Original
+
+#### Amended
 
 ## Challenges
 
