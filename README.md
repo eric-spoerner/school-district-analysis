@@ -1,6 +1,13 @@
 # Analysis of High School Standardized Test Data
 
-lorem ipsum
+Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.  Segment by multiple levels:
+dist,school,grade,schooltype, budget.
+
+Budget is included and the purpose of this analysis is to calculate budgetary consideraations.
+
+Two copies of this analysis are contained:
+* the initial analysis;
+* a secondary analysis conducted to remove flawed test data after a cheating scandal was identified in one specific school at one grade level.. analysis was altered to remove all traces of that grade leverl.
 
 ## Delete me later: Deliverable 3 requirements
 
@@ -34,18 +41,48 @@ I am overviewing this project about school data.  We tweaked it whne we discover
 
 ## Resources
 
-* jupyter (version)
-    * Python
+* jupyter lab (version)
+    * Python (version)
+    * pandas, os, numpy modules
+* VS code
+* csv file
 
 ## The Data
 
-student sstuff.  csv
+Two csv files:
+* `schools_complete.csv` contains data for each individua lschool including:
+    * SchoolID
+    * Name
+    * Type
+    * Size (student count)
+    * Total budget
+
+* `students_complete.csv` contains records for **39,170 student records**, each affiliated with one of the schools in the other csv.
+    * Student ID
+    * student_name
+    * gender
+    * grade level
+    * school_name
+    * reading_score
+    * math_score
 
 ### Data Cleanliness considerations
 
+Data had to be scrubbed before the initial anlysis due to containing honorifics and professional titles, apparently a common gag among students in this district.
+
+Data was subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.
+
+## Code refactor
+
+As part of the work on altering the analysis to exclude Thomas High 9th graders, a larger code refactor was undertaken.
+
 ## Analysis
 
+
+
 ## Challenges
+
+Formatting was a significant concern.  In particular, the ability to retain a formatted column before more analysis needed to be conducted.
 
 ## Further analysis 
 
