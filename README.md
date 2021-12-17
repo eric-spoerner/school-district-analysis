@@ -26,10 +26,6 @@ Summary:
 
 There is a statement summarizing four changes to the school district analysis after reading and math scores have been replaced (5 pt).
 
-## Table of contents test
-
-[Analysis](#analysis)
-
 ## Project Overview
 
 Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.  Segment by multiple levels:
@@ -40,6 +36,19 @@ Budget is included and the purpose of this analysis is to calculate budgetary co
 Two copies of this analysis are contained:
 * the initial analysis; `name of original file`
 * a secondary analysis `name of second file` conducted to remove flawed test data after a cheating scandal was identified in one specific school at one grade level.. analysis was altered to remove all traces of that grade leverl.
+
+## Table of contents
+
+2. Resources
+3. The Data
+    * Data cleanliness considerations
+4. [Analysis](#analysis)
+    * General observations
+    * Effect of cheating scandal on aggregates
+7. Challenges
+8. Further analysis
+9. Image appendix
+
 
 ## Resources
 
@@ -83,68 +92,92 @@ Eliminated unecessary print statements and other debug statements in initial ana
 
 Added markdown cells to better document flow of analysis.
 
+Renamed data frames and other artifacts for legibility.
+
 ## Analysis <a name="analysis"></a>
 
-## General observations
-Nothing yet.
+### General observations
+Current budget is inversely correlated with actual performance.  (How does this analysis compare with charter v district discussion?)
 
-## Effect of cheating scandal on aggregates
-
-## Image appendix
-
-### District aggregation
-
-#### Original
-
-#### Amended
-![Amended district summary](Analysis/Revised/district_summary.png)
-
-### By school
-
-#### Original
-
-#### Amended
-![Amended per school results](Analysis/Revised/per_school_results.png)
-
-### Best performing schools
-
-#### Original
-
-#### Amended
-
-### Worst performing schools
-
-#### Original
-
-#### Amended
-
-### Math scores by school/grade
-
-#### Original
-
-#### Amended
-
-### Reading scores by school/grade
-
-#### Original
-
-#### Amended
-
-### Budget summary
-
-#### Original
-
-#### Amended
-
-### By school type
-
-#### Original
-
-#### Amended
+### Effect of cheating scandal on aggregates
 
 ## Challenges
 
 Formatting was a significant concern.  In particular, the ability to retain a formatted column before more analysis needed to be conducted.
 
 ## Further analysis 
+
+## Image appendix
+
+### District aggregation
+
+#### Original
+![Original district summary](Analysis/Original/district_summary.png)
+
+#### Revised
+![Revised district summary](Analysis/Revised/district_summary.png)
+
+### By school
+
+#### Original
+![Original per school results](Analysis/Original/per_school_results.png)
+
+#### Revised
+![Revised per school results](Analysis/Revised/per_school_results.png)
+
+### Best performing schools
+
+#### Original
+![Original best performing schools](Analysis/Original/top_5_schools.png)
+
+#### Revised
+![Revised best performing schools](Analysis/Revised/top_5_schools.png)
+
+### Worst performing schools
+
+#### Original
+![Original worst performing schools](Analysis/Original/bottom_5_schools.png)
+
+#### Revised
+![Revised worst performing schools](Analysis/Revised/bottom_5_schools.png)
+
+### Math scores by school/grade
+
+#### Original
+![Revised math scores by school and grade](Analysis/Original/math_scores_by_grade.png)
+
+#### Revised
+![Revised math scores by school and grade](Analysis/Revised/math_scores_by_grade.png)
+
+### Reading scores by school/grade
+
+#### Original
+![Original reading scores by school and grade](Analysis/Original/reading_scores_by_grade.png)
+
+#### Revised
+![Revised reading scores by school and grade](Analysis/Revised/reading_scores_by_grade.png)
+
+### By per-student budget expenditure
+
+#### Original
+![Original binning by per-student budget](Analysis/Original/spending_summary.png)
+
+#### Revised
+![Revised binning by per-student budget](Analysis/Revised/spending_summary.png)
+
+### By student body size
+
+#### Original
+![Original binning by student body](Analysis/Original/school_size_summary.png)
+
+#### Revised
+![Revised binning by student body](Analysis/Revised/school_size_summary.png)
+
+### By school type
+
+#### Original
+![Original binning by school type](Analysis/Original/school_type_summary.png)
+
+#### Revised
+![Revised binning by school type](Analysis/Revised/school_type_summary.png)
 
