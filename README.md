@@ -4,7 +4,6 @@
 
 Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.   Budget is included and the purpose of this analysis is to calculate budgetary consideraations.
 
-
 Segment by multiple levels:
 * district-wide
 * by school
@@ -12,7 +11,6 @@ Segment by multiple levels:
 * by school type (charter vs district)
 * by per-student budget expenditure
 * by student body size
-
 
 Two distinct versions of this analysis are contained in this repository:
 * the initial analysis, conducted in [PyCitySchools.ipynb](PyCitySchools.ipynb)
@@ -26,11 +24,10 @@ Two distinct versions of this analysis are contained in this repository:
 3. [Analysis](#analysis)
     * General observations
     * Effect of cheating scandal on aggregates
-4. [Refactor](#refactor)
-7. [Challenges](#challenges)
-8. [Further analysis](#next_steps)
-9. [Appendix](#appendix)
-
+4. [Further analysis](#next_steps)
+5. [Refactor](#refactor)
+6. [Challenges](#challenges)
+7. [Appendix](#appendix)
 
 ## Resources <a name="resources"></a>
 
@@ -66,24 +63,22 @@ Data had to be scrubbed before the initial anlysis due to containing honorifics 
 
 Data was also subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.
 
-## Code refactor <a name="refactor"></a>
-
-As part of the work on altering the analysis to exclude Thomas High 9th graders, a larger code refactor was undertaken.
-
-Eliminated unecessary print statements and other debug statements in initial analysis for diagnostic purposes and replaced them with more streamlined purpose-driven cells for simplicity and legibility.
-
-Added markdown cells to better document flow of analysis.
-
-Renamed data frames and other artifacts for legibility.
-
 ## Analysis <a name="analysis"></a>
+
+All data tables used an anaysis are referenced below in the [Appendix](#appendix), and are accessed by clicking the link for each listed category where provided.
 
 ### General observations
 Current budget is inversely correlated with actual performance.  (How does this analysis compare with charter v district discussion?)
 
-### Effect of cheating scandal on aggregates
+Top and bottom 5 schools are illustrative of the disparity between charter and district schools -- all of the top 5 schools have a > 90% overall passing rate and are all charter, while the bottom 5 schools all have a < 55% overall passing rate and are all district schools. 
 
-All data tables used an anaysis are referenced below in the [Appendix](#appendix), and are accessed by clicking the link for each listed category.
+Overall student body performs far better on reading (Passing Rate 85.7%) than math (passing rate 74.8%).  Given that average scores are much closer (81.9 reading, 78.9 math), this suggests a significant amount of failing tests in math with very low scores.
+
+Discrepancy in average score for charter vs district is far lower than discrepancy in passing percentage.  SUggests a significant volume of troubled or highly remedial students.
+
+No apparent trends or significant fluctuation are noticeable on a grade-by-grade basis.
+
+### Effect of cheating scandal on analysis
 
 * [District summary](#district):
     * Average math score drops from 79.0 to 78.9, but average reading score remains 81.9.
@@ -104,11 +99,23 @@ All data tables used an anaysis are referenced below in the [Appendix](#appendix
     * [Scores by school size](#size)
     * [Scores by school type](#type)
 
+## Further analysis <a name="next_steps"></a>
+
+More investigation/different average calculations to identify discrepancies in student body size et all.
+
+## Code refactor <a name="refactor"></a>
+
+As part of the work on altering the analysis to exclude Thomas High 9th graders, a larger code refactor was undertaken.
+
+Eliminated unecessary print statements and other debug statements in initial analysis for diagnostic purposes and replaced them with more streamlined purpose-driven cells for simplicity and legibility.
+
+Added markdown cells to better document flow of analysis.
+
+Renamed data frames and other artifacts for legibility.
+
 ## Challenges <a name="challenges"></a>
 
 Formatting was a significant concern.  In particular, the ability to retain a formatted column before more analysis needed to be conducted.
-
-## Further analysis <a name="next_steps"></a>
 
 ## Appendix <a name="appendix"></a>
 
