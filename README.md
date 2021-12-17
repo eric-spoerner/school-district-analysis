@@ -2,14 +2,21 @@
 
 ## Project Overview
 
-Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.  Segment by multiple levels:
-dist,school,grade,schooltype, budget.
+Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.   Budget is included and the purpose of this analysis is to calculate budgetary consideraations.
 
-Budget is included and the purpose of this analysis is to calculate budgetary consideraations.
 
-Two copies of this analysis are contained:
-* the initial analysis; `name of original file`
-* a secondary analysis `name of second file` conducted to remove flawed test data after a cheating scandal was identified in one specific school at one grade level.. analysis was altered to remove all traces of that grade leverl.
+Segment by multiple levels:
+* district-wide
+* by school
+* by school/grade
+* by school type (charter vs district)
+* by per-student budget expenditure
+* by student body size
+
+
+Two distinct versions of this analysis are contained in this repository:
+* the initial analysis, conducted in [PyCitySchools.ipynb](PyCitySchools.ipynb)
+* a secondary analysis, conducted in [PyCitySchools_Challenge.ipynb](PyCitySchools_Challenge.ipynb), altered the original script to remove flawed test data after a cheating scandal was identified in one specific school at one grade level. The analysis was altered to remove the data from that school/grade in order to more accurately capture performance results.  This version was also refactored to streamline result, adhere to coding best practices, and provide markdown comments where appropriate.
 
 ## Table of contents
 
@@ -21,7 +28,7 @@ Two copies of this analysis are contained:
     * Effect of cheating scandal on aggregates
 4. [Refactor](#refactor)
 7. [Challenges](#challenges)
-8. [Further analysis](#nextsteps)
+8. [Further analysis](#next_steps)
 9. [Appendix](#appendix)
 
 
@@ -35,7 +42,7 @@ Two copies of this analysis are contained:
 ## The Data <a name="data"></a>
 
 Two csv files:
-* `schools_complete.csv` contains data for each individua lschool including:
+* `schools_complete.csv` contains data for each individual school including:
     * SchoolID
     * Name
     * Type
@@ -55,9 +62,9 @@ These two files can be mapped together using the school's name, enabling us to c
 
 ### Data Cleanliness considerations
 
-Data had to be scrubbed before the initial anlysis due to containing honorifics and professional titles, apparently a common gag among students in this district.
+Data had to be scrubbed before the initial anlysis due to containing honorifics and professional titles, apparently a common gag among students in this district (e.g. "Mr. Eric Spoerner" or "Eric Spoerner PHd" instead of "Eric Spoerner").
 
-Data was subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.
+Data was also subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.
 
 ## Code refactor <a name="refactor"></a>
 
