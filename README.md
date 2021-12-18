@@ -15,7 +15,7 @@ School and student level data are analyzed and segmented by the following dimens
 Two distinct versions of this analysis are contained in this repository:
 
 * the initial analysis, conducted in [PyCitySchools.ipynb](PyCitySchools.ipynb)
-* a secondary analysis, conducted in [PyCitySchools_Challenge.ipynb](PyCitySchools_Challenge.ipynb), altered the original script to remove compromise test data after a cheating scandal was identified in one specific school at one grade level.  This version was also refactored to streamline flow, adhere to coding best practices, and provide markdown comments where appropriate.
+* a secondary analysis, conducted in [PyCitySchools_Challenge.ipynb](PyCitySchools_Challenge.ipynb), altered the original script to remove compromised test data after a cheating scandal was identified in one specific school at one grade level.  This version was also refactored to streamline flow, adhere to coding best practices, and provide markdown comments where appropriate.
 
 ## Table of contents
 
@@ -42,29 +42,29 @@ Two distinct versions of this analysis are contained in this repository:
 ## The Data <a name="data"></a>
 
 Source data is comprised of two files:
-* `schools_complete.csv` contains data for each individual school including:
-    * SchoolID
+* `schools_complete.csv` contains data for **15 high schools** including:
+    * School ID
     * Name
     * Type
-    * Size (student count)
-    * Total budget
+    * Student Count
+    * Total Budget
 
-* `students_complete.csv` contains records for **39,170 student records**, each affiliated with one of the schools in the other csv.
+* `students_complete.csv` contains records for **39,170 student records**, each affiliated with one of the schools in the other csv.  Provided fields:
     * Student ID
-    * student_name
-    * gender
-    * grade level
-    * school_name
-    * reading_score
-    * math_score
+    * Student Name
+    * Gender
+    * Grade Level
+    * School Name
+    * Reading Score
+    * Math Score
 
-These two files were mapped together using the school's name, enabling us to conduct aggregation exercises for the test scores and grade levels.
+These two files were mapped together using the school's name, enabling aggregation exercises for the test scores and grade levels.
 
 ### Data Cleanliness considerations <a name="cleanliness"></a>
 
-Student names had to be scrubbed before the initial anlysis due to containing honorifics and professional titles, apparently a common joke among students in this district (e.g. "Mr. Eric Spoerner" or "Eric Spoerner Ph.D" instead of "Eric Spoerner").
+Student names had to be scrubbed before the initial analysis due to containing honorifics and professional titles, apparently a common joke among students in this district (e.g. "Dr. Eric Spoerner" or "Eric Spoerner Ph.D" instead of "Eric Spoerner").
 
-Data was also subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.  A widespread cheating scandal was identified among this group, rendering that component of the dataset unreliable.  All scores belonging to this group were removed from the data set, and excluded from aggregate numbers when calculating grade- and school-level aggregate values.
+In the second analysis, data required recalculation with the omission of remove 9th graders at Thomas from the sample set.  A widespread cheating scandal was identified among this group, rendering that component of the dataset unreliable.  All scores belonging to this group were removed from the data set, and excluded from aggregate numbers when calculating grade- and school-level aggregate values.
 
 ## Code refactor <a name="refactor"></a>
 
@@ -112,11 +112,13 @@ The following is a list the changes to calculation results resulting from remova
 
 ## Further analysis <a name="next_steps"></a>
 
+Options for refining and expanding on this analysis include:
+
 * _Refine average calculations_.  Several statistics in this model including scores by school spending, size, and type, were calculated using an "average of averages" methodology, wherein student data was first aggregated at the school level, and then those school-based averages were averaged together.  This is a fairly unsophisticated aggregation model, and complicated the analysis of the impact of omitting Thomas High's 9th grade test scores.
 
 * _Gender-based analysis_. Consider further segmentation of test results by gender to identify potential areas of high gender discrepancy, especially in specific schools or school types.
 
-* _Further statistical analysis_ - Find distributions and outliers in all of the categories that have thus far been calaculated.  Identify potential inequalities of student outcome in data set that are not identified through this analysis.
+* _Further statistical analysis_ - Find distributions and outliers in all of the categories that have thus far been calaculated.  Identify potential inequalities of student outcome in data set that are not identified through existing analysis.
 
 ## Challenges <a name="challenges"></a>
 
