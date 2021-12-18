@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-Presentation to state board of education. Standardized tests in math and science.  Proficiency of performance metrics by school.   Budget is included and the purpose of this analysis is to calculate budgetary consideraations.
+This repository contains analysis of standardized tests in both math and reading, adminstered to all high schoolers in a given school district.  The purpose of this analysis is to contextualize and drive budgetary decisions for the district in the coming school year.
 
-Segment by multiple levels:
+School and student level data are analyzed and segmented by the following dimensions and groups:
 * district-wide
 * by school
 * by school/grade
@@ -13,32 +13,35 @@ Segment by multiple levels:
 * by student body size
 
 Two distinct versions of this analysis are contained in this repository:
+
 * the initial analysis, conducted in [PyCitySchools.ipynb](PyCitySchools.ipynb)
-* a secondary analysis, conducted in [PyCitySchools_Challenge.ipynb](PyCitySchools_Challenge.ipynb), altered the original script to remove flawed test data after a cheating scandal was identified in one specific school at one grade level. The analysis was altered to remove the data from that school/grade in order to more accurately capture performance results.  This version was also refactored to streamline result, adhere to coding best practices, and provide markdown comments where appropriate.
+* a secondary analysis, conducted in [PyCitySchools_Challenge.ipynb](PyCitySchools_Challenge.ipynb), altered the original script to remove compromise test data after a cheating scandal was identified in one specific school at one grade level.  This version was also refactored to streamline flow, adhere to coding best practices, and provide markdown comments where appropriate.
 
 ## Table of contents
 
 1. [Resources](#resources)
 2. [The Data](#data)
-    * Data cleanliness considerations
-3. [Analysis](#analysis)
-    * General observations
-    * Effect of cheating scandal on aggregates
-4. [Further analysis](#next_steps)
-5. [Refactor](#refactor)
+    * [Data cleanliness considerations](#cleanliness)
+3. [Refactor](#refactor)
+4. [Analysis](#analysis)
+    * [General observations](#observations)
+    * [Effect of cheating scandal on aggregates](#impact)
+5. [Further analysis](#next_steps)
 6. [Challenges](#challenges)
 7. [Appendix](#appendix)
 
 ## Resources <a name="resources"></a>
 
-* jupyter lab (version)
-    * Python (version)
-    * pandas, os, numpy modules
-* VS code
+* Anaconda3 (2021.11)
+* Jupyter Lab (3.2.1)
+* Python (3.7.11)
+    * Pandas module (1.3.4)
+    * Numpy module (1.20.3)
+* Visual Studio Code (1.63.2)
 
 ## The Data <a name="data"></a>
 
-Two csv files:
+Source data is comprised of two files:
 * `schools_complete.csv` contains data for each individual school including:
     * SchoolID
     * Name
@@ -55,43 +58,51 @@ Two csv files:
     * reading_score
     * math_score
 
-These two files can be mapped together using the school's name, enabling us to conduct aggregation exercises for the test scores and grade levels.
+These two files were mapped together using the school's name, enabling us to conduct aggregation exercises for the test scores and grade levels.
 
-### Data Cleanliness considerations
+### Data Cleanliness considerations <a name="cleanliness"></a>
 
-Data had to be scrubbed before the initial anlysis due to containing honorifics and professional titles, apparently a common gag among students in this district (e.g. "Mr. Eric Spoerner" or "Eric Spoerner PHd" instead of "Eric Spoerner").
+Student names had to be scrubbed before the initial anlysis due to containing honorifics and professional titles, apparently a common joke among students in this district (e.g. "Mr. Eric Spoerner" or "Eric Spoerner Ph.D" instead of "Eric Spoerner").
 
-Data was also subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.
+Data was also subsequently re-calculated to factor in changes to remove 9th graders at Thomas from the sample set.  A widespread cheating scandal was identified among this group, rendering that component of the dataset unreliable.  All scores belonging to this group were removed from the data set, and excluded from aggregate numbers when calculating grade- and school-level aggregate values.
+
+## Code refactor <a name="refactor"></a>
+
+As part of the work on altering the analysis to exclude Thomas High 9th graders, a larger code refactor was undertaken from PyCitySchools.ipynb to PyCitySchools_challenge.ipynb.  This refactor:
+
+* eliminated unnecessary print statements and other debug statements in favor of streamlined code that only calls final output dataframes
+* renamed data objects for legibility, including appending `_df` to all primary DataFrame objects 
+* Added markdown cells to document major components
+* Addressed formatting challenge (see [Challenges](#challenges) below)
 
 ## Analysis <a name="analysis"></a>
 
-All data tables used an anaysis are referenced below in the [Appendix](#appendix), and are accessed by clicking the link for each listed category where provided.
+All data tables used an analysis are referenced below in the [Appendix](#appendix), and are accessed by clicking the link for each listed category where provided.
 
-### General observations
-Current budget is inversely correlated with actual performance.  (How does this analysis compare with charter v district discussion?)
+### General observations <a name="observations"></a>
 
-Top and bottom 5 schools are illustrative of the disparity between charter and district schools -- all of the top 5 schools have a > 90% overall passing rate and are all charter, while the bottom 5 schools all have a < 55% overall passing rate and are all district schools. 
+* Current budget is inversely correlated with standardized test performance.
+* Top and bottom 5 schools are illustrative of the disparity between charter and district schools -- all of the top 5 schools have a > 90% overall passing rate and are all charter, while the bottom 5 schools all have a < 55% overall passing rate and are all district schools. 
+* Overall student body performs far better on reading (passing rate 85.7%) than math (passing rate 74.8%).  Given that average scores for each category are much closer (81.9 reading, 78.9 math), this suggests varying distributions of test score results for math as opposed to reading.
+* Similarly, the discrepancy in average score for charter vs district is far lower than discrepancy in passing percentage.  Suggests a significant volume of troubled or highly remedial students in district schools.
+* No apparent trends or significant fluctuation are noticeable on a grade-by-grade basis.
 
-Overall student body performs far better on reading (Passing Rate 85.7%) than math (passing rate 74.8%).  Given that average scores are much closer (81.9 reading, 78.9 math), this suggests a significant amount of failing tests in math with very low scores.
+### Effect of removal of compromised data on analysis <a name="impact"></a>
 
-Discrepancy in average score for charter vs district is far lower than discrepancy in passing percentage.  SUggests a significant volume of troubled or highly remedial students.
-
-No apparent trends or significant fluctuation are noticeable on a grade-by-grade basis.
-
-### Effect of cheating scandal on analysis
+The following is a list the changes to calculation results resulting from removal of Thomas High 9th graders:
 
 * [District summary](#district):
     * Average math score drops from 79.0 to 78.9, but average reading score remains 81.9.
-    * Percent passing math drops from 75% to 74.8%.
+    * Percentage passing math drops from 75% to 74.8%.
     * Percentage passing reading drops from 85.8% to 85.7%.
-    * Overall passage rate drops from 65.2% to 64.9%
+    * Overall passage rate drops from 65.2% to 64.9%.
 * [School Summary](#perschool):
     * Thomas High average reading score rises from 83.8 to 83.9, while math stays steady at 83.4.
-    * Percent passing math drops from 93.3% to 93.2%.
-    * Percentage passing reading drops from 97.3% to 97.2%.
-    * Overall passage rate drops from 90.9% to 90.6%
+    * Thomas High percentage passing math drops from 93.3% to 93.2%.
+    * Thomas High percentage passing reading drops from 97.3% to 97.2%.
+    * Thomas High overall passage rate drops from 90.9% to 90.6%
 * [Top 5 schools](#top_five):
-    * Thomas High's reduced overall passage rate drops it from uncontested #2 ranked school in the district, to a tie with Griffin High School, which also has a 90.6% overall passing rate.
+    * Thomas High's reduced overall passage rate drops it from uncontested #2 ranked school in the district (90.9% passing), to a tie with Griffin High School, which also has a 90.6% overall passing rate.
 * [Math](#math) and [reading](#reading) scores by grade:
     * Because the cheating scandal was contained in one grade level at one school, the only difference in this analysis is the missing values for Thomas High 9th graders (listed in the tables below as "nan", which stands for "not a number".)
 * The following categories had negligible effect based on calculation methodology and significant figures in output:
@@ -101,21 +112,21 @@ No apparent trends or significant fluctuation are noticeable on a grade-by-grade
 
 ## Further analysis <a name="next_steps"></a>
 
-More investigation/different average calculations to identify discrepancies in student body size et all.
+* _Refine average calculations_.  Several statistics in this model including scores by school spending, size, and type, were calculated using an "average of averages" methodology, wherein student data was first aggregated at the school level, and then those school-based averages were averaged together.  This is a fairly unsophisticated aggregation model, and complicated the analysis of the impact of omitting Thomas High's 9th grade test scores.
 
-## Code refactor <a name="refactor"></a>
+* _Gender-based analysis_. Consider further segmentation of test results by gender to identify potential areas of high gender discrepancy, especially in specific schools or school types.
 
-As part of the work on altering the analysis to exclude Thomas High 9th graders, a larger code refactor was undertaken.
-
-Eliminated unecessary print statements and other debug statements in initial analysis for diagnostic purposes and replaced them with more streamlined purpose-driven cells for simplicity and legibility.
-
-Added markdown cells to better document flow of analysis.
-
-Renamed data frames and other artifacts for legibility.
+* _Further statistical analysis_ - Find distributions and outliers in all of the categories that have thus far been calaculated.  Identify potential inequalities of student outcome in data set that are not identified through this analysis.
 
 ## Challenges <a name="challenges"></a>
 
-Formatting was a significant concern.  In particular, the ability to retain a formatted column before more analysis needed to be conducted.
+In the current data flow of the model, the primary DataFrame for retaining school summary data is calculated, and then subsequently the same column is formatted to display dollar signs, separator commas, and appropriate significant figures.  This conversion results in columns with modified data types (`Float64` -> `Object`), rendering them unable to be referenced for subsequent analysis.  In this case, those numbers were still needed for subsequent aggregations on school type, budget, and size.
+
+Two options were considered to handle this during the refactor:
+1. Migrate pre-calculated results to a new "raw" column value on the DataFrame, retaining them for subsequent calculations when needed and omitting them from visual presentation
+2. Only conduct formatting at the very end of the analysis after all calculations are complete
+
+Option 1 was chosen, as this was the path that was least disruptive to data flow.
 
 ## Appendix <a name="appendix"></a>
 
